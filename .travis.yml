@@ -5,6 +5,8 @@ services:
 before_install:
   - docker build -t clausen/react-test -f ./client/Dockerfile.dev ./client
 
+  - echo "$DOCKER_PASSWORD" | docker login -u "§DOCKER_ID" --password-stdin
+
 script:
   - docker run -e CI=true clausenc/react-test npm test
 
